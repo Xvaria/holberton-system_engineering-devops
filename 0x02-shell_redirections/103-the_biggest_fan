@@ -1,3 +1,2 @@
 #!/bin/bash
-tail -n +2 nasa_19950801.tsv | cut -f 1 | sort | uniq -c | sort -n | ta
-il -n 11 | sort -r | rev | cut -d " " -f 1 | rev
+tail -n +2 nasa_19950801.tsv | cut -f 1 | sort | uniq -c | sort -n | tail -n 11 | sort -r | rev | cut -d " " -f 1 | rev
