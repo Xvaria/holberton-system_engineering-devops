@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Install nginx web server
+apt-get update
+apt-get install -y nginx
+echo "Holberton School" > /var/www/html/index.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+new_string="\\\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=9oxf2sBssH8;\n\t}"
+sed -i "48i $new_string" /etc/nginx/sites-available/default
+sed -i "42i \\\n\terror_page 404 /404.html;" /etc/nginx/sites-available/default
+service nginx restart
