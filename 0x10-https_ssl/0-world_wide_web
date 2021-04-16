@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# display information about subdomains
+if [[ $# == 1 ]]; then
+    str=$(dig "www.$1" | grep -A1 'ANSWER SECTION:' | tail -1)
+    echo "The subdomain $(echo "$str" | awk -F'.' '{print $1;}') is a $(echo "$str" | awk -F' ' '{print $4;}') record and points to $(echo "$str" | awk -F' ' '{print $5;}')"
+    str=$(dig "lb-01.$1" | grep -A1 'ANSWER SECTION:' | tail -1)
+    echo "The subdomain $(echo "$str" | awk -F'.' '{print $1;}') is a $(echo "$str" | awk -F' ' '{print $4;}') record and points to $(echo "$str" | awk -F' ' '{print $5;}')"
+    str=$(dig "web-01.$1" | grep -A1 'ANSWER SECTION:' | tail -1)
+    echo "The subdomain $(echo "$str" | awk -F'.' '{print $1;}') is a $(echo "$str" | awk -F' ' '{print $4;}') record and points to $(echo "$str" | awk -F' ' '{print $5;}')"
+    str=$(dig "web-02.$1" | grep -A1 'ANSWER SECTION:' | tail -1)
+    echo "The subdomain $(echo "$str" | awk -F'.' '{print $1;}') is a $(echo "$str" | awk -F' ' '{print $4;}') record and points to $(echo "$str" | awk -F' ' '{print $5;}')"
+else
+    str=$(dig "$2.$1" | grep -A1 'ANSWER SECTION:' | tail -1)
+    echo "The subdomain $(echo "$str" | awk -F'.' '{print $1;}') is a $(echo "$str" | awk -F' ' '{print $4;}') record and points to $(echo "$str" | awk -F' ' '{print $5;}')"
+fi
