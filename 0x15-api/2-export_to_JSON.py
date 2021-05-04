@@ -20,6 +20,7 @@ if __name__ == "__main__":
             json_dict['completed'] = dic['completed']
             json_dict['username'] = json_usr['username']
             dicl.append(json_dict)
+            json_dict = {}
     jsonf[argv[1]] = dicl
-    with open(argv[1]+".json", "w+") as file:
+    with open(argv[1]+".json", "w") as file:
         json.dump(jsonf, file)
