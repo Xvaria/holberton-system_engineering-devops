@@ -19,8 +19,6 @@ if __name__ == "__main__":
             if dic['completed']:
                 tasks_usr.append(dic['title'])
                 done_task += 1
-    print("Employee {} is done with tasks({}/{}):".format(json_usr['name'],
-                                                          done_task,
-                                                          total_task))
-    for title_task in tasks_usr:
-        print("\t {}".format(title_task))
+    print("Employee {} is done with tasks({}/{}):\n\t {}".
+          format(json_usr['name'], done_task, total_task,
+                 "\n\t ".join(tasks_usr)))
