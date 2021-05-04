@@ -13,7 +13,9 @@ if __name__ == "__main__":
     json_tds = todos.json()
     for dic in json_tds:
         if dic['userId'] == int(argv[1]):
-            csv += '"{}","{}","{}","{}"\n'.format(argv[1], json_usr['username'],
-                                                dic['completed'], dic['title'])
-    with open (argv[1]+".csv", "w+") as file:
+            csv += '"{}","{}","{}","{}"\n'.format(argv[1],
+                                                  json_usr['username'],
+                                                  dic['completed'],
+                                                  dic['title'])
+    with open(argv[1]+".csv", "w+") as file:
         file.write(csv)
