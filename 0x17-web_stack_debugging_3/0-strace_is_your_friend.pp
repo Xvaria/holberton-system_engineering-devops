@@ -1,5 +1,8 @@
 # Fix typo in apache2 server.
 exec { 'replace':
-  command => 'sed -i 's/phpp/php/' /var/www/html/wp-settings.php',
-  path    => '['/usr/bin', '/bin']',
+  environment => ['DIR=/var/www/html/wp-settings.php',
+                  'OLD=phpp',
+                  'NEW=php'],
+  command     => 'sudo sed -i "s/$OLD/$NEW/" $DIR',
+  path        => ['/usr/bin', '/bin']
 }
