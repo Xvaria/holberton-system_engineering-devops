@@ -8,6 +8,6 @@ exec { 'replace':
 }
 # Restart Nginx server
 exec { 'restart':
-  command     => 'service nginx restart',
-  path        => ['/usr/bin', '/bin']
+  command => 'service nginx restart',
+  path    => ['/usr/bin', '/bin']
 }
